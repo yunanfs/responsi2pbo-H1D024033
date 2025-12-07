@@ -1,0 +1,39 @@
+SOAL PENGAYAAN (Refleksi Polimorfisme)
+Jawablah pertanyaan berikut:
+1. Apa yang dimaksud dengan polimorfisme dalam OOP? Jelaskan bagaimana metode override bekerja.
+2. Mengapa array bertipe DefaultMesin dapat menyimpan objek MesinMotor dan MesinTraktor?
+3. Apa perbedaan override dan overload?
+4. Apa keuntungan menggunakan polimorfisme dalam sistem inventaris seperti contoh di atas?
+5. Bagaimana cara kerja dynamic dispatch pada Java saat memanggil method override?
+
+Jawaban
+1. Apa yang dimaksud dengan polimorfisme dalam OOP? Jelaskan bagaimana metode override bekerja.
+Polimorfisme adalah kemampuan sebuah objek untuk dianggap sebagai bentuk umum (parent), namun tetap menjalankan perilaku spesifiknya sendiri (child).
+Override bekerja dengan cara "menimpa" method milik parent class di subclass dengan logika baru.
+
+Pada pert5 Semua dianggap defaultMesin, tapi saat tampilInfo() dipanggil, mesinMotor menampilkan "Tipe Motor" sedangkan mesinTraktor menampilkan "Kapasitas Tarik".
+
+2. Mengapa array bertipe DefaultMesin dapat menyimpan objek MesinMotor dan MesinTraktor?
+Karena adanya konsep Inheritance ("Is-A Relationship"). Karena mesinMotor dan mesinTraktor adalah turunan (extends) dari defaultMesin, maka mereka sah dianggap sebagai defaultMesin.
+
+Pada pert5: inventarisMesin[0] = new mesinMotor(...). Wadahnya tipe induk, isinya objek anak.
+
+3. Apa perbedaan override dan overload?
+
+    - Override: Nama method dan parameter sama persis, tujuannya mengganti perilaku method warisan.
+
+    Contoh: nilaiPerforma() di mesinMotor (x1.2) berbeda rumusnya dengan di defaultMesin (x1.0).
+
+    - Overload: Nama method sama, tapi parameter berbeda (jumlah/tipe datanya).
+
+    Contoh: (Di soal ini fokus pada override, tapi contoh overload adalah jika ada constructor mesinMotor() kosong dan mesinMotor(String nama)).
+
+4. Apa keuntungan menggunakan polimorfisme dalam sistem inventaris seperti contoh di atas?
+Membuat kode fleksibel dan efisien. Kita bisa memproses berbagai jenis mesin berbeda hanya menggunakan satu looping (perulangan) saja tanpa perlu memilah satu per satu secara manual.
+
+Contoh di pert5: for (defaultMesin mesin : inventarisMesin) -> Kode ini bisa menjalankan nilaiPerforma() yang berbeda-beda untuk Motor, Traktor, dan Traktor Listrik sekaligus.
+
+5. Bagaimana cara kerja dynamic dispatch pada Java saat memanggil method override?
+Dynamic dispatch adalah mekanisme di mana Java menentukan method mana yang harus dijalankan pada saat Runtime (saat program berjalan), bukan saat kompilasi. Java melihat objek aslinya di memori, bukan tipe variabelnya.
+
+Contoh di pert5: Meskipun variabel dideklarasikan sebagai defaultMesin m, jika objek aslinya adalah new mesinTraktorListrik(...), maka saat m.suaraMesin() dipanggil (setelah casting), Java akan otomatis menjalankan suara "Bzzzzz!" (milik Traktor Listrik), bukan suara lainnya.

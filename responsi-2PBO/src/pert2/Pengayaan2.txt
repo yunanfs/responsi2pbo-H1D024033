@@ -1,0 +1,35 @@
+Pertanyaan Refleksi
+Setelah menyelesaikan kode, jawab pertanyaan berikut:
+
+Apa yang dimaksud dengan constructor overloading dalam pemrograman berorientasi objek?
+Bagaimana cara Java membedakan constructor yang memiliki nama sama namun parameter berbeda?
+Apa perbedaan antara mengakses variabel secara langsung (misalnya: objek.variabel = nilai) dengan menggunakan method setter?
+Jelaskan konsep encapsulation dan bagaimana method dapat membantu melindungi data dalam sebuah class!
+Mengapa constructor tidak memiliki return type, bahkan tidak menggunakan kata kunci void?
+
+Jawaban
+
+1. Constructor overloading Adalah kemampuan membuat lebih dari satu constructor dalam satu class yang sama, asalkan parameternya berbeda.
+
+Pada pert2 ini memungkinkan kita membuat objek BarangMusik dengan 3 cara berbeda: hanya tahu kode & nama, tahu harga juga, atau tahu data lengkap stoknya sekaligus.
+
+2. Cara Java membedakan constructor yang memiliki nama sama namun parameter berbeda yakni Java membedakannya berdasarkan Tanda Tangan Method (Method Signature), yaitu melihat jumlah, tipe data, dan urutan parameter yang dikirim saat objek dibuat.
+
+Pada pert2 ini Java tahu harus menjalankan constructor yang mana dengan melihat apakah kita mengirimkan 2 argumen (String, String) atau 4 argumen (String, String, double, int).
+
+3. Perbedaan akses variabel langsung vs method setter
+
+    - Akses Langsung (obj.harga = -500): Tidak aman, nilai bisa diisi sembarangan (misal: negatif).
+
+    - Method Setter / Modifikasi (obj.ubahHarga(-500)): Lebih aman karena bisa menambahkan validasi/logika pengecekan.
+
+Pada pert 2 ini menggunakan Method ubahHarga mencegah harga diisi angka negatif (if (hargaBaru >= 0)), hal tersebut tidak bisa dilakukan jika variabel diakses langsung.
+
+4. Konsep encapsulation dan perlindungan data
+Encapsulation adalah menyembunyikan data sensitif dengan membuat variabel menjadi private dan hanya menyediakan akses melalui method public.
+
+Pada pert2 Variabel jumlahStok bersifat private. Untuk mengubahnya, kita wajib lewat method tambahStok(). Ini melindungi data agar stok tidak bisa diubah seenaknya tanpa aturan yang jelas.
+
+5. Constructor tidak memiliki return type (bahkan void) Karena tugas spesifik constructor adalah menginisialisasi (membangun) objek baru.
+Secara implisit, itu sebenarnya mengembalikan instance (wujud) dari class itu sendiri kepada memori.
+Jika kita menambahkan void atau tipe data lain di depannya, Java akan menganggapnya sebagai method biasa, bukan constructor, sehingga objek gagal dibuat.

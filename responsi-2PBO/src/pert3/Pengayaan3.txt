@@ -1,0 +1,33 @@
+Pertanyaan Refleksi
+Setelah menyelesaikan kode, jawab pertanyaan berikut:
+
+1. Apa fungsi keyword 'extends' dalam deklarasi class Java?
+2. Jelaskan perbedaan antara Method Overloading (yang ada di latihan sebelumnya) dengan Method Overriding (yang ada di latihan ini)!
+3. Apa kegunaan keyword 'super' di dalam constructor subclass (Manajer)?
+4. Jika variabel di class Karyawan diubah access modifier-nya menjadi 'private', apa yang akan terjadi pada class Manajer? Bagaimana solusinya?
+5. Mengapa kita perlu menggunakan Inheritance? Apa keuntungan utamanya dibandingkan membuat dua class yang terpisah sama sekali (misal class Karyawan dan class Manajer dibuat terpisah tanpa hubungan)?
+
+Jawaban:
+1. Apa fungsi keyword 'extends' dalam deklarasi class Java? Keyword ini berfungsi untuk menciptakan hubungan pewarisan (inheritance) antara dua class.
+
+Pada pert3 yakni class Manajer extends Karyawan artinya Manajer otomatis memiliki semua atribut (nama, gajiPokok) dan kemampuan yang dimiliki oleh Karyawan tanpa perlu menulis ulang kodenya.
+
+2. Jelaskan perbedaan antara Method Overloading dengan Method Overriding!
+
+    - Method Overloading (pada pert2): Nama method sama, tapi parameternya berbeda. Tujuannya untuk memberikan variasi cara pemanggilan.
+
+    - Method Overriding (pada pert3): Nama method, parameter, dan tipe kembalian sama persis dengan method di parent class, tapi isi/logikanya diganti.
+
+Pada pert3 Method tampilInfo() di Manajer menimpa (override) method milik Karyawan agar bisa menampilkan tambahan data Tunjangan dan Total Gaji.
+
+3. Apa kegunaan keyword 'super' di dalam constructor subclass (Manajer)? Berfungsi untuk memanggil constructor milik Parent Class (Karyawan).
+
+Pada pert3 super(nama, gajiPokok); digunakan untuk mengirim data nama dan gaji ke class Karyawan agar diinisialisasi di sana. Ini mencegah duplikasi kode inisialisasi.
+
+4. Jika variabel di class Karyawan diubah access modifier-nya menjadi 'private', apa yang akan terjadi pada class Manajer? Bagaimana solusinya? Akan terjadi Error, karena variabel private tidak bisa diakses langsung oleh class anak (Manajer).
+
+Solusinya: Buatkan method Getter (misalnya public String getNama()) di class Karyawan, lalu class Manajer mengakses data tersebut melalui method getter, bukan akses variabel langsung.
+
+5. Mengapa kita perlu menggunakan Inheritance? Apa keuntungan utamanya? Untuk menghindari duplikasi kode (Code Reusability).
+
+Pada pert3 Jika dibuat terpisah tanpa inheritance, kita harus menulis ulang variabel nama dan gajiPokok serta method tampilInfo() dasar di dalam class Manajer. Dengan inheritance, kita cukup menulis hal-hal yang spesifik/beda saja (seperti tunjangan).

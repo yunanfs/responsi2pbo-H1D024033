@@ -1,0 +1,38 @@
+[PERTANYAAN PENGAYAAN]
+
+1. Mengapa constructor di class Member wajib memanggil constructor Customer menggunakan super(...)?
+
+2. Apa tujuan memanggil super.tampilkanInfo() saat melakukan overriding method di subclass?
+
+3. Berikan contoh kondisi di mana pemanggilan super.method() sangat penting dalam pewarisan.
+
+4. Bagaimana keyword super membantu membedakan atribut yang memiliki nama sama antara parent dan child?
+
+5. Mengapa pendekatan inheritance lebih efisien dibanding menyalin ulang seluruh atribut dan method ke dalam class Member?
+
+JAWAB
+1. Mengapa constructor di class Member wajib memanggil constructor Customer menggunakan super(...)?
+Karena objek Member mewarisi Customer, maka data dasar (Nama, ID, Total Belanja) harus diinisialisasi terlebih dahulu oleh Constructor Parent sebelum mengisi data khusus Member.
+
+Pada pert4: super(nama, id, total) memastikan data dasar Customer tersimpan dengan benar sebelum Member mengisi poin dan level.
+
+2. Apa tujuan memanggil super.tampilkanInfo() saat melakukan overriding method di subclass?
+Untuk menggunakan kembali (reuse) kode yang sudah ada di parent, sehingga kita tidak perlu menulis ulang logika untuk menampilkan data dasar.
+
+Pada pert4: Kita panggil super untuk mencetak Nama & ID, lalu method di Member cukup fokus mencetak Poin & Level saja.
+
+3. Berikan contoh kondisi di mana pemanggilan super.method() sangat penting dalam pewarisan.
+Sangat penting ketika kita ingin memperluas (extend) fungsionalitas method parent, bukan menggantinya secara total.
+
+Pada pert4: Jika Member tidak memanggil super.tampilkanInfo(), maka outputnya hanya akan menampilkan Poin dan Level. Nama dan ID pelanggan akan hilang dari layar.
+
+4. Bagaimana keyword super membantu membedakan atribut yang memiliki nama sama antara parent dan child?
+Keyword super secara spesifik menunjuk ke variabel milik Parent Class, sedangkan this menunjuk ke variabel milik class itu sendiri (Child).
+
+Meskipun di pert4 tidak ada nama variabel yang kembar, super.namaVariabel akan sangat berguna jika di masa depan Member dan Customer kebetulan punya nama variabel yang sama persis (Shadowing).
+
+5. Mengapa pendekatan inheritance lebih efisien dibanding menyalin ulang seluruh atribut dan method ke dalam class Member?
+Karena memudahkan perawatan kode (Maintenance) dan mencegah duplikasi.
+
+Pada pert4: Jika format "Nomor Identitas Customer" perlu diubah suatu hari nanti, kita cukup mengubah kodenya satu kali di class Customer.
+Class Member akan otomatis mewarisi perubahan tersebut tanpa perlu diedit manual.

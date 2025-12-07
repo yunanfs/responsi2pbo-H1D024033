@@ -1,0 +1,40 @@
+Pertanyaan Refleksi
+Setelah menyelesaikan kode, jawab pertanyaan berikut:
+
+1. Apa itu abstract class dan Kenapa kita membutuhkan Abstarct class?
+2. Apa perbedaan utama antara abstract class dan class biasa dalam pemrograman berorientasi objek?
+3. Mengapa subclass wajib mengimplementasikan semua abstract method dari parent class?
+4. Mengapa abstract method tidak boleh memiliki isi implementasi di dalam abstract class?
+5. Bagaimana abstract class dapat mendukung konsep polimorfisme, dan mengapa objek yang direferensikan melalui tipe abstract class tetap dapat menjalankan perilaku berbeda pada masing-masing subclass?
+
+Jawaban
+1. Apa itu abstract class dan Kenapa kita membutuhkan Abstract class?
+Abstract class adalah kelas "kerangka" atau cetak biru yang tidak bisa dibuat langsung menjadi objek.
+Kita membutuhkannya untuk menetapkan standar dasar yang wajib dimiliki oleh semua kelas turunannya.
+
+Contoh di pert6: KendaraanGalaksi dibuat abstrak karena "Kendaraan Galaksi" itu terlalu umum.
+Kita butuh class ini agar semua kendaraan pasti punya nama, energi, dan metode jelajah(), tapi kita tidak bisa membuat objek new KendaraanGalaksi() secara langsung.
+
+2. Apa perbedaan utama antara abstract class dan class biasa dalam pemrograman berorientasi objek?
+Perbedaan utamanya adalah Instansiasi dan Abstract Method. Abstract class tidak bisa dibuat objeknya menggunakan new dan boleh memiliki method tanpa isi (abstract method).
+Class biasa harus memiliki isi method yang lengkap dan bisa dibuat objeknya.
+
+Contoh di pert6: Kode new KendaraanGalaksi(...) akan Error. Kita hanya bisa melakukan new PesawatTempur(...) atau new KapalEksplorasi(...).
+
+3. Mengapa subclass wajib mengimplementasikan semua abstract method dari parent class?
+Karena abstract method adalah sebuah "Kontrak" atau janji. Jika parent class berkata "Setiap kendaraan harus bisa menjelajah", maka subclass wajib menuliskan codingan cara menjelajahnya.
+Jika tidak, subclass tersebut dianggap tidak lengkap (masih abstrak).
+
+Contoh di pert6: PesawatTempur wajib menulis ulang isi method jelajah(), isiEnergi(), dan aktifkanMesin(). Jika salah satu dihapus, program akan error.
+
+4. Mengapa abstract method tidak boleh memiliki isi implementasi di dalam abstract class?
+Karena logika implementasinya belum diketahui di level parent dan berbeda-beda untuk setiap subclass.
+Parent hanya mendefinisikan "apa yang harus dilakukan", bukan "bagaimana caranya".
+
+Contoh di pert6: Method abstract void jelajah(int jarak); di KendaraanGalaksi kosong (tidak ada kurung kurawal {}) karena konsumsi bahan bakarnya beda: Pesawat boros (3%), Kapal irit (2%).
+
+5. Bagaimana abstract class dapat mendukung konsep polimorfisme?
+Abstract class berperan sebagai tipe data umum (wadah) yang bisa menampung berbagai objek subclass.
+Meskipun variabelnya bertipe abstract (KendaraanGalaksi), saat method dijalankan, Java akan melihat objek aslinya di memori (apakah itu Pesawat atau Kapal) dan menjalankan logika milik objek tersebut.
+
+Contoh di pert6: Jika kita menulis KendaraanGalaksi k = new PesawatTempur(...), saat kita panggil k.jelajah(10), sistem otomatis menjalankan rumus boros (3%) milik Pesawat, bukan rumus Kapal, meskipun tipe variabelnya KendaraanGalaksi.

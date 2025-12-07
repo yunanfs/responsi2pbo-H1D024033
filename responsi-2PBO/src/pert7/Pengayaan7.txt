@@ -1,0 +1,38 @@
+Pertanyaan Refleksi
+Setelah menyelesaikan kode, jawab pertanyaan berikut:
+
+1. Apa perbedaan antara interface dengan class biasa?
+2. Mengapa interface tidak memiliki implementasi method di dalamnya?
+3. Apa tujuan penggunaan keyword "implements" pada sebuah class?
+4. Apakah sebuah class dapat mengimplementasikan lebih dari satu interface? Jelaskan dan berikan contoh sederhana.
+5. Jika sebuah class mengimplementasikan interface, apa yang terjadi jika class tersebut tidak mengimplementasikan semua method dari interface tersebut?
+
+Jawaban
+1. Apa perbedaan antara interface dengan class biasa?
+Interface hanya berisi kontrak (daftar method kosong/abstrak) tanpa implementasi logika dan variabel penyimpan data,
+sedangkan Class biasa berisi logika kode lengkap dan variabel untuk menyimpan data nyata.
+
+Contoh di pert7: PaymentMethod (Interface) tidak memiliki variabel saldo, hanya daftar perintah. EWalletPayment (Class) memiliki variabel nyata saldoPengguna dan logika pengurangan uang.
+
+2. Mengapa interface tidak memiliki implementasi method di dalamnya?
+Karena Interface bertujuan untuk memisahkan Definisi ("Apa yang harus dilakukan") dengan Implementasi ("Bagaimana cara melakukannya").
+Detail caranya diserahkan ke class masing-masing karena bisa berbeda-beda.
+
+Contoh di pert7: Method processPayment() di interface kosong karena logika bayar E-Wallet (potong saldo) pasti beda dengan Kartu Kredit (tambah tagihan), jadi interface tidak boleh mengaturnya secara kaku.
+
+3. Apa tujuan penggunaan keyword "implements" pada sebuah class?
+Menandakan bahwa class tersebut menyetujui kontrak untuk menjalankan semua aturan yang ada di interface.
+Class tersebut "berjanji" akan menyediakan kode untuk semua method yang diminta.
+
+Contoh di pert7: class EWalletPayment implements PaymentMethod artinya EWalletPayment wajib dan harus memiliki method processPayment(), getBalance().
+
+4. Apakah sebuah class dapat mengimplementasikan lebih dari satu interface? Jelaskan dan berikan contoh.
+Ya, Bisa. Ini adalah keunggulan utama Interface dibanding Abstract Class (yang hanya bisa 1 parent).
+Satu class bisa mematuhi banyak kontrak sekaligus.
+
+Contoh Pengembangan pert7: Jika E-Wallet butuh fitur keamanan login, definisinya bisa: public class EWalletPayment implements PaymentMethod, SecurityAccess { ... }
+
+5. Jika sebuah class mengimplementasikan interface, apa yang terjadi jika class tersebut tidak mengimplementasikan semua method dari interface tersebut?
+Akan terjadi Compile Error (Gagal Kompilasi). Program tidak akan bisa dijalankan karena dianggap melanggar kontrak (janjinya belum lunas). Kecuali class tersebut diubah menjadi abstract class.
+
+Contoh di pert7: Jika di class EWalletPayment kamu menghapus method getTransactionFee(), maka baris public class EWalletPayment... akan digaris merah oleh editor karena method-nya kurang satu.

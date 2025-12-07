@@ -1,0 +1,40 @@
+Setelah anda menyelesaikan kode, tolong jawab pertanyaan dibawah ini ya =
+
+
+1. Apa tujuan utama adanya interface dalam pemrograman berorientasi objek, dan bagaimana interface membantu menciptakan kontrak perilaku?
+2. Mengapa interface dapat memiliki banyak implementasi, dan apa makna konseptual dari kemampuan tersebut dalam desain sistem?
+3. Apa perbedaan mendasar antara extends dan implements dalam konteks interface, jika dilihat secara konsep tanpa melihat contoh kode?
+4. Apa alasan diperkenalkannya default method dalam interface, dan bagaimana fitur ini memengaruhi keberlangsungan (compatibility) suatu sistem yang sudah berjalan?
+5. Bagaimana konsep multiple interface memperluas fleksibilitas desain tanpa menimbulkan masalah kompleksitas yang biasa muncul pada multiple inheritance?
+
+Jawaban
+1. Apa tujuan utama adanya interface dalam pemrograman berorientasi objek, dan bagaimana interface membantu menciptakan kontrak perilaku?
+Tujuannya adalah Standarisasi, interface bertindak sebagai daftar periksa (checklist) wajib yang menjamin bahwa sebuah class memiliki kemampuan tertentu.
+
+Contoh di pert8: Interface KaryawanKontrak menciptakan kontrak bahwa siapapun yang mengimplementasikannya (seperti ProgrammerMagang) WAJIB memiliki fitur hitungGaji(). Jika tidak ada, program akan error.
+
+2. Mengapa interface dapat memiliki banyak implementasi, dan apa makna konseptual dari kemampuan tersebut dalam desain sistem?
+Maknanya adalah pemisahan antara Definisi ("Apa") dan Implementasi ("Bagaimana").
+Sistem menjadi fleksibel karena satu kontrak bisa dikerjakan dengan cara yang berbeda-beda oleh pekerja yang berbeda.
+
+Contoh di pert8: Jika nanti ada class baru OfficeBoy, dia juga bisa mengimplementasikan KaryawanKontrak, tapi rumus hitungGaji()-nya pasti berbeda dengan ProgrammerMagang.
+Interface mengizinkan perbedaan cara kerja ini meski nama methodnya sama.
+
+3. Apa perbedaan mendasar antara extends dan implements dalam konteks interface, jika dilihat secara konsep tanpa melihat contoh kode?
+
+    - Extends (Pewarisan): Hubungan "Adalah" (Is-A). Mewarisi identitas dan atribut.
+
+    - Implements (Realisasi): Hubungan "Bisa Melakukan" (Can-Do). Mengadopsi kemampuan atau peran spesifik.
+
+Contoh Konsep pada pert8: ProgrammerMagang mengimplementasikan AksesSistem bukan karena dia "anak" dari sistem, tapi karena dia "bisa melakukan" aktivitas login/logout ke dalam sistem.
+
+4. Apa alasan diperkenalkannya default method dalam interface, dan bagaimana fitur ini memengaruhi keberlangsungan (compatibility) suatu sistem yang sudah berjalan?
+Tujuannya untuk Backward Compatibility (Kompatibilitas ke belakang). Ini memungkinkan kita menambah fitur baru di interface tanpa merusak/membuat error class-class lama yang sudah terlanjur dibuat.
+
+Contoh di pert8: Method default getStatusCuti() di KaryawanKontrak sudah punya isi standar ("Tersedia 12 hari").
+Jika ProgrammerMagang lupa atau tidak ingin mengubahnya, program tetap jalan lancar menggunakan nilai standar tersebut.
+
+5. Bagaimana konsep multiple interface memperluas fleksibilitas desain tanpa menimbulkan masalah kompleksitas yang biasa muncul pada multiple inheritance?
+Multiple interface mengizinkan satu objek memiliki Banyak Peran sekaligus tanpa risiko konflik data (Diamond Problem), karena interface tidak menyimpan variabel (state), hanya perilaku.
+
+Contoh di pert8: ProgrammerMagang bisa berperan ganda sebagai KaryawanKontrak (yang digaji) DAN sebagai pengguna AksesSistem (yang bisa login) secara bersamaan dalam satu class ProgrammerMagang implements KaryawanKontrak, AksesSistem.
